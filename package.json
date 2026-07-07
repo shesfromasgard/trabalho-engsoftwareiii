@@ -1,0 +1,16 @@
+{
+  "name": "llm-refactoring-eval",
+  "version": "1.0.0",
+  "description": "Repositório de automação End-to-End para análise de refatoração LLM",
+  "scripts": {
+    "experimento": "node scripts/run_tests.js && npm run pipeline",
+    "pipeline": "node scripts/analisar_complexidade.js && node scripts/gerar_grafico.js"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "chartjs-node-canvas": "^5.0.0",
+    "escomplex": "^2.0.0-alpha"
+  },
+  "author": "Laura",
+  "license": "MIT"
+}
