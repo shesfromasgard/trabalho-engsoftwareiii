@@ -37,7 +37,7 @@ Este repositório contém todo o material suplementar, códigos, tabelas, script
 
 ## 📊 Como reproduzir a análise de Complexidade e Geração de Gráficos (End-to-End)
 
-Para garantir reprodutibilidade sem intervenção humana (*100% automatizado*), o projeto evoluiu seu pipeline substituindo passos manuais de *dashboards web* por *scripts* locais.
+Para garantir reprodutibilidade, execute os seguinte comandos:
 
 1. Instale as dependências analíticas de Node.js na raiz deste repositório:
    ```bash
