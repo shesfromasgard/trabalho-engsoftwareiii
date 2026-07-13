@@ -1,0 +1,12 @@
+> react-material-full@3.0.1 test
+> vitest run --reporter=dot
+
+
+ RUN  v4.0.18 C:/Users/laura/Downloads/Trabalho Engenharia de Software III/tmp/source_repos/react-material-admin
+
+····
+
+ Test Files  3 passed (3)
+      Tests  4 passed (4)
+   Start at  20:13:25
+   Duration  22.64s (transform 633ms, setup 1.30s, import 11.88s, tests 3.25s, environment 5.26s)

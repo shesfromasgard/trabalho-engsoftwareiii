@@ -1,0 +1,35 @@
+{
+  "executedAt": "2026-07-13T22:55:22.443Z",
+  "platform": "win32 10.0.26300 x64",
+  "node": "v22.20.0",
+  "repositories": {
+    "TakeNote": {
+      "path": "C:\\Users\\laura\\Downloads\\Trabalho Engenharia de Software III\\tmp\\source_repos\\takenote",
+      "commit": "e0eddbb9a21ae4cf4c4c7c183f29cfd666e08331"
+    },
+    "ReactAdmin": {
+      "path": "C:\\Users\\laura\\Downloads\\Trabalho Engenharia de Software III\\tmp\\source_repos\\react-material-admin",
+      "commit": "dd136027c2253253cfb5b8a4cb698696fb63f8cd"
+    }
+  },
+  "modelMetadata": {
+    "labels": ["Gemini", "DeepSeek", "Mistral"],
+    "fullVersions": "não preservadas nos artefatos originais",
+    "samplingParameters": "não preservados nos artefatos originais"
+  },
+  "baseline": {
+    "TakeNote": {
+      "status": "PASS",
+      "exitCode": 0,
+      "testsPassed": 101,
+      "evidence": "Suíte concluída sem falhas"
+    },
+    "ReactAdmin": {
+      "status": "PASS",
+      "exitCode": 0,
+      "testsPassed": 4,
+      "evidence": "Suíte concluída sem falhas"
+    }
+  },
+  "runs": 60
+}

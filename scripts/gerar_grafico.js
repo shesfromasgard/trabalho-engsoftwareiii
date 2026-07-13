@@ -3,77 +3,77 @@ const path = require('path');
 const { ChartJSNodeCanvas } = require('chartjs-node-canvas');
 
 const baseDir = path.join(__dirname, '..');
-const resultadosDir = path.join(baseDir, 'resultados');
-const csvPath = path.join(resultadosDir, 'complexidade.csv');
+const resultsDir = path.join(baseDir, 'resultados');
+const csvPath = path.join(resultsDir, 'metricas_resumo.csv');
+
+function parseCsv(content) {
+  const [headerLine, ...lines] = content.trim().split(/\r?\n/);
+  const headers = headerLine.split(',');
+  return lines.map((line) => {
+    const values = line.split(',');
+    return Object.fromEntries(headers.map((header, index) => [header, values[index]]));
+  });
+}
 
 if (!fs.existsSync(csvPath)) {
-    console.error("Arquivo complexidade.csv não encontrado.");
-    process.exit(1);
+  throw new Error('Execute primeiro: npm run metricas');
 }
 
-const csvData = fs.readFileSync(csvPath, 'utf8').trim().split('\n');
-const labels = [];
-const data = [];
-
-// Ignorar o cabeçalho
-for (let i = 1; i < csvData.length; i++) {
-    const row = csvData[i].split(',');
-    if (row.length === 2) {
-        labels.push(row[0]);
-        data.push(parseFloat(row[1]));
-    }
-}
-
-const width = 800;
-const height = 600;
-const chartJSNodeCanvas = new ChartJSNodeCanvas({ width, height, backgroundColour: 'white' });
+const rows = parseCsv(fs.readFileSync(csvPath, 'utf8')).filter((row) => row.Modelo !== 'Original');
+const width = 1200;
+const height = 700;
+const chart = new ChartJSNodeCanvas({ width, height, backgroundColour: 'white' });
 
 const configuration = {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Complexidade Ciclomática Média',
-            data: data,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
-        }]
+  type: 'bar',
+  data: {
+    labels: rows.map((row) => row.Modelo),
+    datasets: [
+      {
+        label: 'Complexidade ciclomática',
+        data: rows.map((row) => Number(row.Reducao_CC_Pct)),
+        backgroundColor: '#2F75B5',
+      },
+      {
+        label: 'Complexidade cognitiva',
+        data: rows.map((row) => Number(row.Reducao_Cognitiva_Pct)),
+        backgroundColor: '#70AD47',
+      },
+      {
+        label: 'Ocorrências de code smells',
+        data: rows.map((row) => Number(row.Reducao_Smells_Pct)),
+        backgroundColor: '#ED7D31',
+      },
+    ],
+  },
+  options: {
+    responsive: false,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Variação percentual em relação aos componentes originais',
+        font: { size: 22 },
+      },
+      legend: { position: 'bottom', labels: { font: { size: 15 } } },
     },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    text: 'Complexidade Média'
-                }
-            }
-        },
-        plugins: {
-            title: {
-                display: true,
-                text: 'Comparativo de Complexidade Ciclomática (Pré e Pós Refatoração)'
-            }
-        }
-    }
+    scales: {
+      y: {
+        title: { display: true, text: 'Redução (%)', font: { size: 16 } },
+        ticks: { callback: (value) => `${value}%`, font: { size: 13 } },
+        grid: { color: '#D9E2F3' },
+      },
+      x: { ticks: { font: { size: 15 } } },
+    },
+  },
 };
 
-async function generateChart() {
-    const image = await chartJSNodeCanvas.renderToBuffer(configuration);
-    const outputPath = path.join(resultadosDir, 'grafico_complexidade.png');
-    fs.writeFileSync(outputPath, image);
-    console.log(`Gráfico gerado em: ${outputPath}`);
+async function main() {
+  const buffer = await chart.renderToBuffer(configuration);
+  fs.writeFileSync(path.join(resultsDir, 'grafico_reducao_percentual.png'), buffer);
+  console.log('Gráfico atualizado em resultados/grafico_reducao_percentual.png');
 }
 
-generateChart();
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

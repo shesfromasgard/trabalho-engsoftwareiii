@@ -1,0 +1,324 @@
+> takenote@0.7.2 test
+> jest --config config/jest.config.js --runInBand --watchAll=false
+
+
+ts-jest[ts-compiler] (WARN) [96msrc/client/containers/TakeNoteApp.tsx[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m TS7022: [0m'loadNotes' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+[7m36[0m   const loadNotes = useCallback(() => dispatch(loadNotes()), [dispatch]);
+[7m  [0m [91m        ~~~~~~~~~[0m
+[96msrc/client/containers/TakeNoteApp.tsx[0m:[93m37[0m:[93m9[0m - [91merror[0m[90m TS7022: [0m'loadCategories' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+[7m37[0m   const loadCategories = useCallback(() => dispatch(loadCategories()), [dispatch]);
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/TakeNoteApp.tsx[0m:[93m38[0m:[93m9[0m - [91merror[0m[90m TS7022: [0m'loadSettings' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+[7m38[0m   const loadSettings = useCallback(() => dispatch(loadSettings()), [dispatch]);
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/client/containers/TakeNoteApp.tsx[0m:[93m39[0m:[93m9[0m - [91merror[0m[90m TS7022: [0m'swapCategories' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+[7m39[0m   const swapCategories = useCallback(
+[7m  [0m [91m        ~~~~~~~~~~~~~~[0m
+FAIL tests/unit/client/containers/TakeNoteApp.test.tsx (10.432 s)
+  ● Console
+
+    console.error
+      Error: Uncaught [RangeError: Maximum call stack size exceeded]
+          at reportException (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\jsdom\lib\jsdom\living\helpers\runtime-script-errors.js:62:24)
+          at innerInvokeEventListeners (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:333:9)
+          at invokeEventListeners (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:274:3)
+          at HTMLUnknownElementImpl._dispatch (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:221:9)
+          at HTMLUnknownElementImpl.dispatchEvent (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:94:17)
+          at HTMLUnknownElement.dispatchEvent (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:231:34)
+          at Object.invokeGuardedCallbackDev (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\react-dom\cjs\react-dom.development.js:237:16)
+          at invokeGuardedCallback (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\react-dom\cjs\react-dom.development.js:292:31)
+          at flushPassiveEffectsImpl (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\react-dom\cjs\react-dom.development.js:22853:9)
+          at unstable_runWithPriority (C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\node_modules\scheduler\cjs\scheduler.development.js:653:12) RangeError: Maximum call stack size exceeded
+          at C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\src\client\containers\TakeNoteApp.tsx:36:39
+          at C:\Users\laura\Downloads\Trabalho Engenharia de Software III\tmp\source_repos\takenote\src\client\containers\TakeNoteApp.tsx:36:48
+          ... collapsed 98 duplicate lines matching above 1 lines 98 times...
+
+      at VirtualConsole.<anonymous> (node_modules/jsdom/lib/jsdom/virtual-console.js:29:45)
+      at VirtualConsole.emit (node:events:519:28)
+      at reportException (node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:28)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:333:9)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+
+    console.error
+      The above error occurred in one of your React components:
+          in Unknown
+          in Router (created by MemoryRouter)
+          in MemoryRouter
+          in Provider
+      
+      Consider adding an error boundary to your tree to customize error handling behavior.
+      Visit https://fb.me/react-error-boundaries to learn more about error boundaries.
+
+      at logCapturedError (node_modules/react-dom/cjs/react-dom.development.js:19527:21)
+      at logError (node_modules/react-dom/cjs/react-dom.development.js:19564:5)
+      at update.callback (node_modules/react-dom/cjs/react-dom.development.js:20708:5)
+      at callCallback (node_modules/react-dom/cjs/react-dom.development.js:12490:12)
+      at commitUpdateQueue (node_modules/react-dom/cjs/react-dom.development.js:12511:9)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:19883:11)
+      at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:22803:7)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:188:14)
+
+  ● <TakeNoteApp /> › should see empty editor if there are no active notes
+
+    RangeError: Maximum call stack size exceeded
+
+      34 |   const dispatch = useDispatch();
+      35 | 
+    > 36 |   const loadNotes = useCallback(() => dispatch(loadNotes()), [dispatch]);
+         |                                       ^
+      37 |   const loadCategories = useCallback(() => dispatch(loadCategories()), [dispatch]);
+      38 |   const loadSettings = useCallback(() => dispatch(loadSettings()), [dispatch]);
+      39 |   const swapCategories = useCallback(
+
+      at src/client/containers/TakeNoteApp.tsx:36:39
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+
+PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
+PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
+PASS tests/unit/client/components/LastSyncedNotification.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
+PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
+PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
+PASS tests/unit/server/middleware/checkAuth.test.ts
+PASS tests/unit/client/slices/note.test.ts
+PASS tests/unit/client/utils/index.test.ts
+PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/slices/sync.test.ts
+PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/slices/category.test.ts
+PASS tests/unit/client/slices/auth.test.ts
+
+Summary of all failing tests
+FAIL tests/unit/client/containers/TakeNoteApp.test.tsx (10.432 s)
+  ● <TakeNoteApp /> › should see empty editor if there are no active notes
+
+    RangeError: Maximum call stack size exceeded
+
+      34 |   const dispatch = useDispatch();
+      35 | 
+    > 36 |   const loadNotes = useCallback(() => dispatch(loadNotes()), [dispatch]);
+         |                                       ^
+      37 |   const loadCategories = useCallback(() => dispatch(loadCategories()), [dispatch]);
+      38 |   const loadSettings = useCallback(() => dispatch(loadSettings()), [dispatch]);
+      39 |   const swapCategories = useCallback(
+
+      at src/client/containers/TakeNoteApp.tsx:36:39
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+      at src/client/containers/TakeNoteApp.tsx:36:48
+
+
+Test Suites: 1 failed, 22 passed, 23 total
+Tests:       1 failed, 100 passed, 101 total
+Snapshots:   0 total
+Time:        30.682 s
+Ran all test suites.

@@ -1,0 +1,7 @@
+Atue como um Engenheiro de software Sênior especialista em React. A seguir, fornecerei o código-fonte de um componente React open-source (sob licença MIT livre). Como pesquisadora, autorizo expressamente a reescrita completa deste código para fins acadêmicos.
+
+O código apresenta débitos técnicos (code smells). Sua tarefa é refatorar o componente INTEIRO de uma só vez para melhorar sua legibilidade, reduzir a complexidade cognitiva e aplicar boas práticas de Clean Code e princípios SOLID.
+
+Você DEVE manter a exata mesma lógica de negócios e as mesmas interfaces contratuais (props de entrada, objetos de retorno e exportações). Este componente é coberto por testes unitários automatizados estritos e qualquer alteração de comportamento quebrará o build.
+
+É crucial que você retorne O CÓDIGO COMPLETO REFATORADO em uma única resposta, sem omitir nada, sem usar comentários como "// o resto do código continua aqui" e sem pular etapas. Retorne apenas o bloco de código.

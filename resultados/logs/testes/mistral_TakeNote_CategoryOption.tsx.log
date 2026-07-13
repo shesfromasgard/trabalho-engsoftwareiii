@@ -1,0 +1,99 @@
+> takenote@0.7.2 test
+> jest --config config/jest.config.js --runInBand --watchAll=false
+
+
+ts-jest[ts-compiler] (WARN) [96msrc/client/containers/CategoryOption.tsx[0m:[93m43[0m:[93m34[0m - [91merror[0m[90m TS7024: [0mFunction implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+
+[7m43[0m   const updateActiveCategoryId = (categoryId: string) =>
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m44[0m     dispatch(updateActiveCategoryId(categoryId));
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m46[0m:[93m28[0m - [91merror[0m[90m TS7024: [0mFunction implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+
+[7m46[0m   const updateActiveNote = (noteId: string, multiSelect: boolean) =>
+[7m  [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m47[0m     dispatch(updateActiveNote({ noteId, multiSelect }));
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m47[0m:[93m14[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 1.
+
+[7m47[0m     dispatch(updateActiveNote({ noteId, multiSelect }));
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96msrc/client/containers/CategoryOption.tsx[0m:[93m46[0m:[93m45[0m
+    [7m46[0m   const updateActiveNote = (noteId: string, multiSelect: boolean) =>
+    [7m  [0m [96m                                            ~~~~~~~~~~~~~~~~~~~~[0m
+    An argument for 'multiSelect' was not provided.
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m49[0m:[93m31[0m - [91merror[0m[90m TS7024: [0mFunction implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+
+[7m49[0m   const updateSelectedNotes = (noteId: string, multiSelect: boolean) =>
+[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m50[0m     dispatch(updateSelectedNotes({ noteId, multiSelect }));
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m50[0m:[93m14[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 1.
+
+[7m50[0m     dispatch(updateSelectedNotes({ noteId, multiSelect }));
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96msrc/client/containers/CategoryOption.tsx[0m:[93m49[0m:[93m48[0m
+    [7m49[0m   const updateSelectedNotes = (noteId: string, multiSelect: boolean) =>
+    [7m  [0m [96m                                               ~~~~~~~~~~~~~~~~~~~~[0m
+    An argument for 'multiSelect' was not provided.
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m91[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '(a: NoteItem, b: NoteItem) => number' is not assignable to parameter of type '(a: { id: string; trash: boolean; category: string; }, b: { id: string; trash: boolean; category: string; }) => number'.
+  Types of parameters 'a' and 'a' are incompatible.
+    Type '{ id: string; trash: boolean; category: string; }' is missing the following properties from type 'NoteItem': text, created, lastUpdated
+
+[7m91[0m     .sort(getNotesSorter(notesSortKey));
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m91[0m:[93m26[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string' is not assignable to parameter of type 'NotesSortKey'.
+
+[7m91[0m     .sort(getNotesSorter(notesSortKey));
+[7m  [0m [91m                         ~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m168[0m:[93m27[0m - [91merror[0m[90m TS2304: [0mCannot find name 'handleCategoryMenuClick'.
+
+[7m168[0m       onClick={(event) => handleCategoryMenuClick(event, category.id)}
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m174[0m:[93m25[0m - [91merror[0m[90m TS2552: [0mCannot find name 'contextMenuRef'. Did you mean 'ContextMenuEnum'?
+
+[7m174[0m         contextMenuRef={contextMenuRef}
+[7m   [0m [91m                        ~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m176[0m:[93m26[0m - [91merror[0m[90m TS2304: [0mCannot find name 'optionsPosition'.
+
+[7m176[0m         optionsPosition={optionsPosition}
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~[0m
+[96msrc/client/containers/CategoryOption.tsx[0m:[93m200[0m:[93m5[0m - [91merror[0m[90m TS2345: [0mArgument of type 'NoteItem[]' is not assignable to parameter of type '{ id: string; trash: boolean; category: string; }[]'.
+  Type 'NoteItem' is not assignable to type '{ id: string; trash: boolean; category: string; }'.
+    Types of property 'trash' are incompatible.
+      Type 'boolean | undefined' is not assignable to type 'boolean'.
+        Type 'undefined' is not assignable to type 'boolean'.
+
+[7m200[0m     notes,
+[7m   [0m [91m    ~~~~~[0m
+PASS tests/unit/client/containers/TakeNoteApp.test.tsx (8.231 s)
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/slices/note.test.ts
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
+PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
+PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
+PASS tests/unit/client/components/LastSyncedNotification.test.tsx
+PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
+PASS tests/unit/server/middleware/checkAuth.test.ts
+PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
+PASS tests/unit/client/utils/index.test.ts
+PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/client/slices/sync.test.ts
+PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
+PASS tests/unit/client/slices/category.test.ts
+
+Test Suites: 23 passed, 23 total
+Tests:       101 passed, 101 total
+Snapshots:   0 total
+Time:        24.794 s, estimated 27 s
+Ran all test suites.

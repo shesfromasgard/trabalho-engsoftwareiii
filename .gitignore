@@ -1,7 +1,6 @@
 node_modules/
 .DS_Store
-package-lock.json
-resultados/grafico_complexidade.png
-resultados/complexidade.csv
-artigoFinal/resultados/
 *.log
+!resultados/logs/
+!resultados/logs/testes/
+!resultados/logs/testes/*.log

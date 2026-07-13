@@ -1,0 +1,17 @@
+{
+  "parser": "TypeScript 4.0.3",
+  "definitions": {
+    "LOC": "linhas contendo tokens não triviais",
+    "cyclomatic": "1 por função mais if, laços, case, catch, ternário e operadores &&, || e ??",
+    "cognitive": "incremento estrutural ponderado pelo nível de aninhamento; operadores lógicos acrescentam 1",
+    "duplication": "percentual de tokens cobertos por sequências normalizadas repetidas de 20 tokens no mesmo arquivo",
+    "smells": {
+      "longFunction": "função com mais de 50 linhas",
+      "highCyclomatic": "complexidade ciclomática maior que 10",
+      "highCognitive": "complexidade cognitiva maior que 15",
+      "deepNesting": "aninhamento maior que 3",
+      "largeFile": "arquivo com mais de 300 LOC",
+      "highDuplication": "duplicação de tokens igual ou superior a 10%"
+    }
+  }
+}

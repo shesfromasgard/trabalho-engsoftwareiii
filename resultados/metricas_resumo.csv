@@ -1,0 +1,5 @@
+Modelo,Arquivos,LOC_Media,CC_Media_Arquivo,CC_Maxima_Media,Cognitiva_Media_Arquivo,Cognitiva_Maxima_Media,Maior_Funcao_LOC_Media,Duplicacao_Media_Pct,Code_Smells_Total,Reducao_CC_Pct,Reducao_Cognitiva_Pct,Reducao_Smells_Pct,Diagnosticos_Sintaticos
+Original,20,175.25,30.25,6.25,14.7,7,217.05,31.49,59,0,0,0,0
+Gemini,20,151.05,29.25,5.25,13.6,5.05,160.6,26.29,52,3.31,7.48,11.86,0
+DeepSeek,20,179.8,30.6,5.6,13.45,5.5,130.7,31.45,60,-1.16,8.5,-1.69,0
+Mistral,20,167.25,33,4.4,12.35,4.35,144.8,33.04,55,-9.09,15.99,6.78,0

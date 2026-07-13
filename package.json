@@ -1,16 +1,21 @@
 {
   "name": "llm-refactoring-eval",
-  "version": "1.0.0",
-  "description": "Repositório de automação End-to-End para análise de refatoração LLM",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Pacote de replicação da avaliação de refatorações zero-shot em componentes React",
   "scripts": {
-    "experimento": "node scripts/run_tests.js && npm run pipeline",
-    "pipeline": "node scripts/analisar_complexidade.js && node scripts/gerar_grafico.js"
+    "testes": "node scripts/run_tests.js",
+    "metricas": "node scripts/analisar_complexidade.js",
+    "manifesto": "node scripts/gerar_manifesto.js",
+    "grafico": "node scripts/gerar_grafico.js",
+    "analise": "npm run metricas && npm run grafico",
+    "experimento": "npm run testes && npm run analise && npm run manifesto"
   },
   "dependencies": {
     "chart.js": "^4.5.1",
     "chartjs-node-canvas": "^5.0.0",
-    "escomplex": "^2.0.0-alpha"
+    "typescript": "4.0.3"
   },
-  "author": "Laura",
+  "author": "Laura Cristina Silva e Rocha",
   "license": "MIT"
 }

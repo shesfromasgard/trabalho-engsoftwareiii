@@ -1,0 +1,37 @@
+> react-material-full@3.0.1 test
+> vitest run --reporter=dot
+
+
+ RUN  v4.0.18 C:/Users/laura/Downloads/Trabalho Engenharia de Software III/tmp/source_repos/react-material-admin
+
+···x
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 3 passed (4)
+   Start at  20:21:43
+   Duration  18.97s (transform 613ms, setup 1.15s, import 10.35s, tests 2.33s, environment 4.36s)
+
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/test/smoke/dashboard.smoke.test.jsx > Dashboard Smoke > renders key dashboard widgets
+ReferenceError: mock is not defined
+ ❯ Dashboard src/pages/dashboard/Dashboard.js:919:8
+    917|         />
+    918|       </Grid>
+    919|       {mock.bigStat.map((stat) => (
+       |        ^
+    920|         <Grid key={stat.product} size={{ xs: 12, sm: 6, md: 4 }}>
+    921|           <BigStat {...stat} />
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:41
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:11
+ ❯ performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

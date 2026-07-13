@@ -1,53 +1,107 @@
-# Replication Package: Avaliação Empírica da Preservação Comportamental em Refatorações Zero-Shot de Componentes React utilizando LLMs
+# Pacote de replicação — refatorações zero-shot de componentes React
 
-Este repositório contém todo o material suplementar, códigos, tabelas, scripts de execução e relatórios utilizados no artigo acadêmico. Este pacote de replicação garante a total transparência e reprodutibilidade do estudo empírico.
+Este diretório acompanha o artigo **“Preservação de Testes em Refatorações Zero-Shot de Componentes React com LLMs: um Estudo Exploratório”**. Ele reúne as 20 unidades analisadas, as 60 saídas de LLM preservadas, os prompts documentados, os scripts corrigidos e os resultados da reexecução.
 
-## 📂 Estrutura do Repositório
+O pacote permite auditar os dados e reproduzir os testes e as métricas no ambiente indicado. Ele não permite regenerar exatamente as saídas das LLMs: os artefatos originais não preservaram versão, data, parâmetros de amostragem ou identificador de execução dos modelos. Por esse motivo, os grupos são identificados somente pelos provedores **Gemini**, **DeepSeek** e **Mistral**.
 
-- **`Amostras_Originais/`**: Contém os 20 componentes base extraídos dos projetos *TakeNote* e *React Material Admin*. Este é o *baseline* de código legado com dívida técnica analisado.
-- **`Amostras_Refatoradas/`**: Código-fonte gerado pelas ferramentas de Inteligência Artificial Generativa. Dividido nas subpastas das respectivas LLMs:
-  - `/Gemini`: Componentes refatorados pelo Gemini 1.5 Pro.
-  - `/DeepSeek`: Componentes refatorados pelo DeepSeek Coder.
-  - `/Mistral`: Componentes refatorados pelo Mistral (via API nativa).
-- **`scripts/`**: Módulos de automação Node.js contendo:
-  - `run_tests.js`: Script responsável por injetar os arquivos refatorados nos repositórios originais e invocar as suítes de teste (Vitest/Jest) em modo CI, registrando quebras de comportamento.
-  - `analisar_complexidade.js`: Script de engenharia de dados que realiza a extração local de métricas estáticas utilizando analisadores sintáticos (`escomplex`).
-  - `gerar_grafico.js`: Script que consome os dados analisados e renderiza o gráfico SVG/PNG de complexidade ciclomática.
-- **`resultados/`**: Repositório final de dados gerados pelos scripts (`complexidade.csv`, `grafico_complexidade.png`, etc).
-- **`Artigo_Final/`**: Contém os códigos LaTeX (.tex e .bib), o template da SBC do artigo acadêmico e as pastas de figuras embutidas.
-- **`prompt.txt`**: Contém o texto literal e exato do prompt *zero-shot* utilizado nas LLMs, garantindo a total reprodutibilidade do experimento.
+## Conteúdo
 
-## 🚀 Como reproduzir os testes de regressão
+- `Amostras_Originais/`: 20 arquivos originais — 15 do TakeNote e 5 do React Material Admin.
+- `Amostras_Refatoradas/{Gemini,DeepSeek,Mistral}/`: 60 arquivos produzidos no experimento original.
+- `prompt_original.txt`: transcrição do prompt relatado no manuscrito original.
+- `prompt_recomendado.txt`: versão mais restritiva proposta após a análise das ameaças à validade; **não foi usada para gerar os 60 arquivos existentes**.
+- `scripts/run_tests.js`: substitui uma unidade por vez no repositório correspondente, executa a suíte completa e restaura o arquivo original.
+- `scripts/analisar_complexidade.js`: calcula métricas estáticas com a API de compilador do TypeScript.
+- `scripts/gerar_grafico.js`: gera o gráfico de variação percentual a partir do resumo de métricas.
+- `scripts/gerar_manifesto.js`: calcula SHA-256 dos artefatos e resultados para verificação de integridade.
+- `resultados/`: CSVs, metadados, gráfico e logs da reexecução.
 
-1. Certifique-se de ter o Node.js instalado na máquina.
-2. Clone os repositórios nas seguintes versões para preservar o baseline do estudo: 
-   ```bash
-   git clone https://github.com/taniarascia/takenote.git
-   cd takenote && git checkout 4f3a9b2 && cd ..
-   
-   git clone https://github.com/flatlogic/react-material-admin.git
-   cd react-material-admin && git checkout a1b2c3d && cd ..
-   ```
-   Após clonar nas versões específicas, rode `npm install` em cada um deles para baixar as dependências.
-3. Posicione os repositórios na raiz deste diretório e execute o script de automação:
-   ```bash
-   node run_tests.js
-   ```
-4. O script gerará um novo arquivo CSV consolidado com os resultados da execução no seu ambiente.
+Os arquivos legados `Resultados_Testes.csv`, `complexidade.csv` e `grafico_complexidade.png` foram preservados apenas para rastreabilidade. Os arquivos cujo nome contém `reexecucao`, `metricas_` ou `reducao_percentual` são os resultados usados na versão corrigida do artigo.
 
-## 📊 Como reproduzir a análise de Complexidade e Geração de Gráficos (End-to-End)
+## Proveniência dos projetos
 
-Para garantir reprodutibilidade, execute os seguinte comandos:
+As unidades foram mapeadas para os seguintes estados dos projetos:
 
-1. Instale as dependências analíticas de Node.js na raiz deste repositório:
-   ```bash
-   npm install
-   ```
-2. Execute o pipeline completo (testes + métricas estáticas + geração de gráfico):
-   ```bash
-   npm run experimento
-   ```
-   *Isso acionará os testes automatizados, extrairá o CSV com a complexidade consolidada na pasta `/resultados` e renderizará o gráfico `grafico_complexidade.png` instantaneamente para o artigo.*
+- TakeNote: `taniarascia/takenote`, commit completo `e0eddbb9a21ae4cf4c4c7c183f29cfd666e08331`.
+- React Material Admin: `flatlogic/react-material-admin`, commit completo `dd136027c2253253cfb5b8a4cb698696fb63f8cd`.
 
----
-*Este material acompanha o projeto da disciplina Engenharia de Software III.*
+Clonagem e instalação recomendadas:
+
+```bash
+git clone https://github.com/taniarascia/takenote.git
+git -C takenote checkout e0eddbb9a21ae4cf4c4c7c183f29cfd666e08331
+npm --prefix takenote ci
+
+git clone https://github.com/flatlogic/react-material-admin.git
+git -C react-material-admin checkout dd136027c2253253cfb5b8a4cb698696fb63f8cd
+npm --prefix react-material-admin ci
+```
+
+Requisitos usados na correção: Node.js 22, npm e Git. O `package-lock.json` deste pacote fixa as dependências analíticas; as dependências dos projetos são fixadas pelos respectivos arquivos de lock.
+
+## Reexecução dos testes
+
+Defina os caminhos absolutos dos dois clones. Em PowerShell:
+
+```powershell
+$env:TAKENOTE_DIR = 'C:\caminho\takenote'
+$env:REACT_ADMIN_DIR = 'C:\caminho\react-material-admin'
+npm ci
+npm run testes
+```
+
+Em shells POSIX:
+
+```bash
+TAKENOTE_DIR=/caminho/takenote \
+REACT_ADMIN_DIR=/caminho/react-material-admin \
+npm run testes
+```
+
+O script primeiro valida o commit e executa o baseline de cada projeto. Depois, para cada combinação de arquivo e provedor, copia a saída correspondente para o caminho original, executa toda a suíte do projeto, registra o código de saída e restaura o arquivo em um bloco `finally`. Os principais produtos são:
+
+- `resultados/Resultados_Testes_reexecucao.csv`;
+- `resultados/metadados_reexecucao.json`;
+- `resultados/manifesto_sha256.csv`;
+- `resultados/logs/testes/*.log`.
+
+Uma execução é classificada como aprovada somente quando o comando de teste termina com código de saída zero. Isso constitui evidência de ausência de regressão **detectável pelas suítes existentes**, não prova de equivalência comportamental.
+
+## Métricas estáticas
+
+Instale as dependências deste pacote e execute:
+
+```bash
+npm ci
+npm run analise
+```
+
+As definições completas e os limiares estão em `resultados/metodologia_metricas.json`. Em síntese:
+
+- LOC: linhas com tokens sintáticos;
+- complexidade ciclomática: 1 por função mais pontos de decisão;
+- complexidade cognitiva: pontos por decisões e aninhamento;
+- duplicação: proporção aproximada de linhas em sequências normalizadas de 20 tokens repetidas no mesmo arquivo;
+- odores: função longa (>50 LOC), CC alta (>10), complexidade cognitiva alta (>15), aninhamento profundo (>3), arquivo grande (>300 LOC) e duplicação (>=10%).
+
+O analisador produz `metricas_por_arquivo.csv`, `metricas_resumo.csv` e `metodologia_metricas.json`. O gráfico usa a diferença percentual de cada grupo em relação às mesmas 20 unidades originais; valores negativos representam piora.
+
+## Execução completa
+
+Depois de configurar os dois caminhos de projeto:
+
+```bash
+npm ci
+npm run experimento
+```
+
+Os resultados podem variar em tempo de execução e mensagens de ferramentas, mas os arquivos de entrada, commits, comandos e critérios de classificação ficam registrados nos metadados. Alterações de plataforma, versão do Node ou dependências externas devem ser relatadas em qualquer replicação.
+
+## Limitações de reprodutibilidade
+
+- As versões e configurações das três LLMs não foram preservadas no experimento original.
+- Os testes medem apenas comportamentos cobertos pelas suítes dos projetos.
+- As métricas estáticas implementadas são aproximações operacionais documentadas, não saídas de SonarQube nem medidas universais de qualidade.
+- O prompt recomendado é material de melhoria metodológica e exigiria uma nova geração experimental para produzir resultados comparáveis.
+
+Licença: código do pacote sob MIT; os projetos de origem e suas dependências permanecem sujeitos às respectivas licenças.

@@ -1,0 +1,13 @@
+Atue como um Engenheiro de Software Sênior especialista em React. A seguir, fornecerei o código-fonte de um componente React open-source.
+
+Sua tarefa é refatorar o componente para melhorar sua legibilidade, reduzir sua complexidade ciclomática e cognitiva e mitigar code smells, sem alterar seu comportamento observável.
+
+DIRETRIZES DE PRESERVAÇÃO COMPORTAMENTAL (CRÍTICO):
+1. Preserve todos os contratos públicos: props de entrada, objetos de retorno, nomes e tipos exportados.
+2. Preserve a estrutura observável: elementos JSX, textos renderizados, hierarquia do DOM e ordem relevante dos elementos.
+3. Preserve seletores usados por testes, inclusive atributos data-testid, papéis, rótulos e classes referenciadas.
+4. Preserve fluxos condicionais, efeitos colaterais, chamadas externas, hooks, tratamento de erros e ordem de chamadas quando observável.
+5. Não introduza novas dependências nem altere outros arquivos.
+6. Se não for possível satisfazer simultaneamente a melhoria e a preservação, priorize a preservação e informe que nenhuma refatoração segura foi encontrada.
+
+O componente é coberto por testes automatizados, mas os testes podem ser incompletos. Retorne apenas o código completo refatorado, sem omissões, marcadores de continuação ou explicações externas ao bloco de código.
