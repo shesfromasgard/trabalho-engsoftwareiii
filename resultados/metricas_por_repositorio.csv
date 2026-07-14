@@ -1,0 +1,9 @@
+Modelo,Repositorio,Arquivos,CC_Media_Arquivo,Reducao_CC_Pct,Cognitiva_Media_Arquivo,Reducao_Cognitiva_Pct,Soma_Exploratoria_Smells,Reducao_Soma_Smells_Pct
+Original,ReactAdmin,5,49,0,27.4,0,25,0
+Original,TakeNote,15,24,0,10.47,0,34,0
+Gemini,ReactAdmin,5,53.6,-9.39,27,1.46,23,8
+Gemini,TakeNote,15,21.13,11.94,9.13,12.74,29,14.71
+DeepSeek,ReactAdmin,5,54.2,-10.61,25.6,6.57,29,-16
+DeepSeek,TakeNote,15,22.73,5.28,9.4,10.19,31,8.82
+Mistral,ReactAdmin,5,53.8,-9.8,23,16.06,26,-4
+Mistral,TakeNote,15,26.07,-8.61,8.8,15.92,29,14.71

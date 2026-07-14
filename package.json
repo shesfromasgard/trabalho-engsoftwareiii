@@ -2,13 +2,14 @@
   "name": "llm-refactoring-eval",
   "version": "2.0.0",
   "private": true,
-  "description": "Pacote de replicação da avaliação de refatorações zero-shot em componentes React",
+  "description": "Pacote de replicação da avaliação de reescritas zero-shot em componentes React",
   "scripts": {
     "testes": "node scripts/run_tests.js",
     "metricas": "node scripts/analisar_complexidade.js",
+    "sensibilidade": "node scripts/analisar_resultados.js",
     "manifesto": "node scripts/gerar_manifesto.js",
     "grafico": "node scripts/gerar_grafico.js",
-    "analise": "npm run metricas && npm run grafico",
+    "analise": "npm run metricas && npm run sensibilidade && npm run grafico",
     "experimento": "npm run testes && npm run analise && npm run manifesto"
   },
   "dependencies": {

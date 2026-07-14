@@ -250,6 +250,7 @@ fs.writeFileSync(
         cyclomatic: '1 por função mais if, laços, case, catch, ternário e operadores &&, || e ??',
         cognitive: 'incremento estrutural ponderado pelo nível de aninhamento; operadores lógicos acrescentam 1',
         duplication: 'percentual de tokens cobertos por sequências normalizadas repetidas de 20 tokens no mesmo arquivo',
+        interpretation: 'definições operacionais exploratórias; não equivalem a métricas de ferramenta comercial',
         smells: {
           longFunction: 'função com mais de 50 linhas',
           highCyclomatic: 'complexidade ciclomática maior que 10',
@@ -258,6 +259,8 @@ fs.writeFileSync(
           largeFile: 'arquivo com mais de 300 LOC',
           highDuplication: 'duplicação de tokens igual ou superior a 10%',
         },
+        smellThresholdStatus: 'limiares pré-especificados para esta análise, não pontos de corte validados para React',
+        smellAggregation: 'soma exploratória de eventos heterogêneos; não constitui escala direta de qualidade',
       },
     },
     null,

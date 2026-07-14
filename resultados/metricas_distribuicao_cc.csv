@@ -1,0 +1,4 @@
+Modelo,Arquivos,CC_Melhorou,CC_Igual,CC_Piorou,Delta_CC_Q1,Delta_CC_Mediana,Delta_CC_Q3,Delta_CC_IQR
+Gemini,20,11,2,7,-5.25,-2,1.75,7
+DeepSeek,20,8,3,9,-2,0,3.75,5.75
+Mistral,20,5,2,13,-0.25,2,7.25,7.5

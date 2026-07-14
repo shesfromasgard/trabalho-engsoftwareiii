@@ -21,7 +21,7 @@ if (!fs.existsSync(csvPath)) {
 
 const rows = parseCsv(fs.readFileSync(csvPath, 'utf8')).filter((row) => row.Modelo !== 'Original');
 const width = 1200;
-const height = 700;
+const height = 600;
 const chart = new ChartJSNodeCanvas({ width, height, backgroundColour: 'white' });
 
 const configuration = {
@@ -40,7 +40,7 @@ const configuration = {
         backgroundColor: '#70AD47',
       },
       {
-        label: 'Ocorrências de code smells',
+        label: 'Soma exploratória de regras',
         data: rows.map((row) => Number(row.Reducao_Smells_Pct)),
         backgroundColor: '#ED7D31',
       },
@@ -51,7 +51,7 @@ const configuration = {
     plugins: {
       title: {
         display: true,
-        text: 'Variação percentual em relação aos componentes originais',
+        text: 'Redução percentual em relação aos componentes originais',
         font: { size: 22 },
       },
       legend: { position: 'bottom', labels: { font: { size: 15 } } },

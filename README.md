@@ -1,8 +1,8 @@
-# Pacote de replicação — refatorações zero-shot de componentes React
+# Pacote de replicação — reescritas zero-shot de componentes React
 
-Este diretório acompanha o artigo **“Preservação de Testes em Refatorações Zero-Shot de Componentes React com LLMs: um Estudo Exploratório”**. Ele reúne as 20 unidades analisadas, as 60 saídas de LLM preservadas, os prompts documentados, os scripts corrigidos e os resultados da reexecução.
+Este diretório acompanha o artigo **“Aprovação de Suítes de Teste após Reescritas Zero-Shot de Componentes React por Interfaces de LLM: um Estudo Exploratório”**. Ele reúne as 20 unidades analisadas, as 60 saídas preservadas, os prompts documentados, os scripts corrigidos e os resultados da reexecução.
 
-O pacote permite auditar os dados e reproduzir os testes e as métricas no ambiente indicado. Ele não permite regenerar exatamente as saídas das LLMs: os artefatos originais não preservaram versão, data, parâmetros de amostragem ou identificador de execução dos modelos. Por esse motivo, os grupos são identificados somente pelos provedores **Gemini**, **DeepSeek** e **Mistral**.
+O pacote permite auditar os dados e reproduzir os testes e as métricas no ambiente indicado. Ele não permite regenerar exatamente as saídas das LLMs: os artefatos originais não preservaram versão, data, parâmetros de amostragem ou identificador de execução dos modelos. Por esse motivo, os grupos são identificados somente pelos rótulos verificáveis **Gemini**, **DeepSeek** e **Mistral**. Eles descrevem três conjuntos arquivados de saídas, não tratamentos completamente replicáveis nem famílias abstratas de modelos.
 
 ## Conteúdo
 
@@ -12,11 +12,12 @@ O pacote permite auditar os dados e reproduzir os testes e as métricas no ambie
 - `prompt_recomendado.txt`: versão mais restritiva proposta após a análise das ameaças à validade; **não foi usada para gerar os 60 arquivos existentes**.
 - `scripts/run_tests.js`: substitui uma unidade por vez no repositório correspondente, executa a suíte completa e restaura o arquivo original.
 - `scripts/analisar_complexidade.js`: calcula métricas estáticas com a API de compilador do TypeScript.
+- `scripts/analisar_resultados.js`: calcula resultados por repositório, deltas pareados, dispersão e a análise restrita a saídas aprovadas.
 - `scripts/gerar_grafico.js`: gera o gráfico de variação percentual a partir do resumo de métricas.
 - `scripts/gerar_manifesto.js`: calcula SHA-256 dos artefatos e resultados para verificação de integridade.
 - `resultados/`: CSVs, metadados, gráfico e logs da reexecução.
 
-Os arquivos legados `Resultados_Testes.csv`, `complexidade.csv` e `grafico_complexidade.png` foram preservados apenas para rastreabilidade. Os arquivos cujo nome contém `reexecucao`, `metricas_` ou `reducao_percentual` são os resultados usados na versão corrigida do artigo.
+Os arquivos antigos `Resultados_Testes.csv`, `complexidade.csv` e `grafico_complexidade.png` foram isolados em `resultados/legado/` e preservados apenas para rastreabilidade. Eles não sustentam a versão corrigida. Os resultados atuais são os arquivos cujo nome contém `reexecucao`, `metricas_` ou `reducao_percentual`.
 
 ## Proveniência dos projetos
 
@@ -37,7 +38,7 @@ git -C react-material-admin checkout dd136027c2253253cfb5b8a4cb698696fb63f8cd
 npm --prefix react-material-admin ci
 ```
 
-Requisitos usados na correção: Node.js 22, npm e Git. O `package-lock.json` deste pacote fixa as dependências analíticas; as dependências dos projetos são fixadas pelos respectivos arquivos de lock.
+Ambiente usado na correção: Windows 10.0.26300 x64, Node.js 22.20.0, npm 10.9.3 e Git. O `package-lock.json` deste pacote fixa as dependências analíticas; as dependências dos projetos são fixadas pelos respectivos arquivos de lock.
 
 ## Reexecução dos testes
 
@@ -84,7 +85,9 @@ As definições completas e os limiares estão em `resultados/metodologia_metric
 - duplicação: proporção aproximada de linhas em sequências normalizadas de 20 tokens repetidas no mesmo arquivo;
 - odores: função longa (>50 LOC), CC alta (>10), complexidade cognitiva alta (>15), aninhamento profundo (>3), arquivo grande (>300 LOC) e duplicação (>=10%).
 
-O analisador produz `metricas_por_arquivo.csv`, `metricas_resumo.csv` e `metodologia_metricas.json`. O gráfico usa a diferença percentual de cada grupo em relação às mesmas 20 unidades originais; valores negativos representam piora.
+O analisador produz `metricas_por_arquivo.csv`, `metricas_resumo.csv` e `metodologia_metricas.json`. A etapa de sensibilidade acrescenta `metricas_por_repositorio.csv`, `metricas_deltas_por_arquivo.csv`, `metricas_distribuicao_cc.csv` e `metricas_sensibilidade.csv`. No último arquivo, saídas com `FAIL` e seus originais correspondentes são excluídos em conjunto, preservando o pareamento. O gráfico usa a redução percentual de cada grupo em relação às mesmas 20 unidades originais; valores negativos representam aumento da métrica.
+
+As seis regras de odores são decisões operacionais exploratórias. Suas categorias devem ser interpretadas separadamente; a soma de ocorrências heterogêneas não constitui escala validada nem porcentagem direta de qualidade.
 
 ## Execução completa
 

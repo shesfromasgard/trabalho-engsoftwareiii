@@ -1,0 +1,7 @@
+Modelo,Escopo,Arquivos,CC_Baseline_Media,CC_Media_Arquivo,Reducao_CC_Pct,Cognitiva_Baseline_Media,Cognitiva_Media_Arquivo,Reducao_Cognitiva_Pct,Soma_Baseline_Smells,Soma_Exploratoria_Smells,Reducao_Soma_Smells_Pct
+Gemini,Todas,20,30.25,29.25,3.31,14.7,13.6,7.48,59,52,11.86
+Gemini,PASS,20,30.25,29.25,3.31,14.7,13.6,7.48,59,52,11.86
+DeepSeek,Todas,20,30.25,30.6,-1.16,14.7,13.45,8.5,59,60,-1.69
+DeepSeek,PASS,20,30.25,30.6,-1.16,14.7,13.45,8.5,59,60,-1.69
+Mistral,Todas,20,30.25,33,-9.09,14.7,12.35,15.99,59,55,6.78
+Mistral,PASS,18,29.17,31.39,-7.62,14.11,11.61,17.72,50,44,12
