@@ -2,50 +2,32 @@
 > jest --config config/jest.config.js --runInBand --watchAll=false
 
 
-ts-jest[ts-compiler] (WARN) [96msrc/client/components/AppSidebar/FolderOption.tsx[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS2418: [0mType of computed property's value is 'FC<Props>', which is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; color?: string | undefined; }>'.
-  Type 'FunctionComponent<Props>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; color?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Props> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; color?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Props>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; color?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number | null | undefined'.
-
-[7m18[0m   [Folder.FAVORITES]: Star,
-[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
-[96msrc/client/components/AppSidebar/FolderOption.tsx[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m TS2418: [0mType of computed property's value is 'FC<Props>', which is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; color?: string | undefined; }>'.
-  Type 'FunctionComponent<Props>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; color?: string | undefined; }>'.
-
-[7m19[0m   [Folder.ALL]: Book,
-[7m  [0m [91m  ~~~~~~~~~~~~[0m
-PASS tests/unit/client/containers/TakeNoteApp.test.tsx (9.824 s)
-PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
-PASS tests/unit/server/middleware/checkAuth.test.ts
-PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
-PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
+PASS tests/unit/client/containers/TakeNoteApp.test.tsx (6.044 s)
 PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
 PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
-PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
-PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
+PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
+PASS tests/unit/client/slices/sync.test.ts
 PASS tests/unit/client/slices/note.test.ts
-PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
 PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
 PASS tests/unit/client/components/LastSyncedNotification.test.tsx
-PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
-PASS tests/unit/client/components/Switch.test.tsx
-PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
 PASS tests/unit/client/utils/index.test.ts
+PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
 PASS tests/unit/client/slices/category.test.ts
-PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
-PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
 PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
-PASS tests/unit/client/slices/sync.test.ts
-PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/server/middleware/checkAuth.test.ts
 
 Test Suites: 23 passed, 23 total
 Tests:       101 passed, 101 total
 Snapshots:   0 total
-Time:        29.413 s
+Time:        23.238 s
 Ran all test suites.

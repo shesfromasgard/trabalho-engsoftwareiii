@@ -1,4 +1,4 @@
-Modelo,Arquivos,CC_Melhorou,CC_Igual,CC_Piorou,Delta_CC_Q1,Delta_CC_Mediana,Delta_CC_Q3,Delta_CC_IQR
-Gemini,20,11,2,7,-5.25,-2,1.75,7
-DeepSeek,20,8,3,9,-2,0,3.75,5.75
-Mistral,20,5,2,13,-0.25,2,7.25,7.5
+Modelo,Arquivos,CC_Melhorou,CC_Igual,CC_Piorou,Delta_CC_Q1,Delta_CC_Mediana,Delta_CC_Q3,Delta_CC_IQR,Decisoes_Melhoraram,Decisoes_Iguais,Decisoes_Pioraram,Delta_Decisoes_Q1,Delta_Decisoes_Mediana,Delta_Decisoes_Q3,Delta_Decisoes_IQR
+Gemini,20,11,2,7,-5.25,-2,1.75,7,4,12,4,0,0,0,0
+DeepSeek,20,8,3,9,-2,0,3.75,5.75,5,13,2,-0.25,0,0,0.25
+Mistral,20,5,2,13,-0.25,2,7.25,7.5,10,9,1,-2,-0.5,0,2

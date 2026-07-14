@@ -2,38 +2,32 @@
 > jest --config config/jest.config.js --runInBand --watchAll=false
 
 
-ts-jest[ts-compiler] (WARN) [96msrc/client/containers/CategoryOption.tsx[0m:[93m154[0m:[93m30[0m - [91merror[0m[90m TS2345: [0mArgument of type 'FormEvent<Element>' is not assignable to parameter of type 'ReactSubmitEvent'.
-  Type 'FormEvent<Element>' is not assignable to type 'FormEvent<HTMLFormElement>'.
-    Type 'Element' is missing the following properties from type 'HTMLFormElement': acceptCharset, action, autocomplete, elements, and 123 more.
-
-[7m154[0m       onSubmitUpdateCategory(event)
-[7m   [0m [91m                             ~~~~~[0m
-PASS tests/unit/client/containers/TakeNoteApp.test.tsx (11.053 s)
+PASS tests/unit/client/containers/TakeNoteApp.test.tsx (9.184 s)
 PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
-PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
-PASS tests/unit/client/slices/note.test.ts
-PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
-PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
-PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
-PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
-PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/client/utils/index.test.ts
 PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
+PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/slices/note.test.ts
 PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
+PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
 PASS tests/unit/client/components/LastSyncedNotification.test.tsx
+PASS tests/unit/client/slices/sync.test.ts
 PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
 PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
-PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
-PASS tests/unit/client/utils/index.test.ts
-PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
-PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
-PASS tests/unit/client/components/Switch.test.tsx
-PASS tests/unit/client/slices/sync.test.ts
-PASS tests/unit/client/slices/category.test.ts
-PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
 PASS tests/unit/server/middleware/checkAuth.test.ts
+PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
+PASS tests/unit/client/slices/category.test.ts
+PASS tests/unit/client/slices/auth.test.ts
 
 Test Suites: 23 passed, 23 total
 Tests:       101 passed, 101 total
 Snapshots:   0 total
-Time:        31.152 s
+Time:        31.084 s
 Ran all test suites.

@@ -1,13 +1,7 @@
 {
-  "executedAt": "2026-07-13T22:55:22.443Z",
+  "executedAt": "2026-07-14T01:19:06.193Z",
   "platform": "win32 10.0.26300 x64",
   "node": "v22.20.0",
-  "npm": "10.9.3",
-  "environment": {
-    "CI": "true",
-    "TakeNoteCommand": "npm test -- --runInBand --watchAll=false",
-    "ReactAdminCommand": "npm test -- --reporter=dot"
-  },
   "repositories": {
     "TakeNote": {
       "path": "C:\\Users\\laura\\Downloads\\Trabalho Engenharia de Software III\\tmp\\source_repos\\takenote",
@@ -19,7 +13,11 @@
     }
   },
   "modelMetadata": {
-    "labels": ["Gemini", "DeepSeek", "Mistral"],
+    "labels": [
+      "Gemini",
+      "DeepSeek",
+      "Mistral"
+    ],
     "fullVersions": "não preservadas nos artefatos originais",
     "samplingParameters": "não preservados nos artefatos originais"
   },

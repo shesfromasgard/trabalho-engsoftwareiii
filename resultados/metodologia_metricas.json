@@ -1,8 +1,9 @@
 {
   "parser": "TypeScript 4.0.3",
   "definitions": {
-    "LOC": "linhas contendo tokens não triviais",
-    "cyclomatic": "1 por função mais if, laços, case, catch, ternário e operadores &&, || e ??",
+    "LOC": "número de linhas atravessadas por ao menos um token não trivial; a mesma regra delimita LOC de arquivo e de função",
+    "cyclomatic": "soma por arquivo da CC das funções: 1 por função mais if, laços, case, catch, ternário e operadores &&, || e ??",
+    "decisions": "CC total menos o número de funções; aproxima os pontos de decisão sem o custo-base de 1 por função",
     "cognitive": "incremento estrutural ponderado pelo nível de aninhamento; operadores lógicos acrescentam 1",
     "duplication": "percentual de tokens cobertos por sequências normalizadas repetidas de 20 tokens no mesmo arquivo",
     "interpretation": "definições operacionais exploratórias; não equivalem a métricas de ferramenta comercial",

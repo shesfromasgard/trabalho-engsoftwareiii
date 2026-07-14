@@ -2,54 +2,32 @@
 > jest --config config/jest.config.js --runInBand --watchAll=false
 
 
-ts-jest[ts-compiler] (WARN) [96msrc/client/components/Editor/PreviewEditor.tsx[0m:[93m22[0m:[93m14[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 1.
-
-[7m22[0m     dispatch(updateSelectedNotes({ noteId, multiSelect }));
-[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-
-  [96msrc/client/components/Editor/PreviewEditor.tsx[0m:[93m21[0m:[93m48[0m
-    [7m21[0m   const updateSelectedNotes = (noteId: string, multiSelect: boolean) => {
-    [7m  [0m [96m                                               ~~~~~~~~~~~~~~~~~~~~[0m
-    An argument for 'multiSelect' was not provided.
-[96msrc/client/components/Editor/PreviewEditor.tsx[0m:[93m26[0m:[93m14[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 1.
-
-[7m26[0m     dispatch(updateActiveNote({ noteId, multiSelect }));
-[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-
-  [96msrc/client/components/Editor/PreviewEditor.tsx[0m:[93m25[0m:[93m45[0m
-    [7m25[0m   const updateActiveNote = (noteId: string, multiSelect: boolean) => {
-    [7m  [0m [96m                                            ~~~~~~~~~~~~~~~~~~~~[0m
-    An argument for 'multiSelect' was not provided.
-[96msrc/client/components/Editor/PreviewEditor.tsx[0m:[93m34[0m:[93m25[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ folder: Folder; }' is not assignable to parameter of type 'Folder'.
-
-[7m34[0m     dispatch(swapFolder({ folder }));
-[7m  [0m [91m                        ~~~~~~~~~~[0m
-PASS tests/unit/client/containers/TakeNoteApp.test.tsx (8.497 s)
-PASS tests/unit/client/slices/note.test.ts
+PASS tests/unit/client/containers/TakeNoteApp.test.tsx (8.082 s)
 PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
-PASS tests/unit/client/components/LastSyncedNotification.test.tsx
 PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
-PASS tests/unit/client/slices/sync.test.ts
+PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
+PASS tests/unit/client/slices/note.test.ts
 PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
-PASS tests/unit/client/slices/auth.test.ts
-PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
+PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
 PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
 PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
-PASS tests/unit/client/slices/settings.test.ts
-PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
-PASS tests/unit/client/slices/category.test.ts
-PASS tests/unit/client/components/Switch.test.tsx
-PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
-PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
-PASS tests/unit/server/middleware/checkAuth.test.ts
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/components/LastSyncedNotification.test.tsx
 PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
-PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
-PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
 PASS tests/unit/client/utils/index.test.ts
-PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/slices/sync.test.ts
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/server/middleware/checkAuth.test.ts
+PASS tests/unit/client/slices/category.test.ts
 
 Test Suites: 23 passed, 23 total
 Tests:       101 passed, 101 total
 Snapshots:   0 total
-Time:        25.028 s, estimated 28 s
+Time:        32.066 s
 Ran all test suites.

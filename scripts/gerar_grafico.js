@@ -30,7 +30,7 @@ const configuration = {
     labels: rows.map((row) => row.Modelo),
     datasets: [
       {
-        label: 'Complexidade ciclomática',
+        label: 'ΣCC (inclui 1 por função)',
         data: rows.map((row) => Number(row.Reducao_CC_Pct)),
         backgroundColor: '#2F75B5',
       },

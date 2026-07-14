@@ -59,7 +59,7 @@ REACT_ADMIN_DIR=/caminho/react-material-admin \
 npm run testes
 ```
 
-O script primeiro valida o commit e executa o baseline de cada projeto. Depois, para cada combinação de arquivo e provedor, copia a saída correspondente para o caminho original, executa toda a suíte do projeto, registra o código de saída e restaura o arquivo em um bloco `finally`. Os principais produtos são:
+O script primeiro valida o commit e exige uma árvore de trabalho limpa antes de executar a linha de base de cada projeto. Depois, para cada combinação de arquivo e conjunto, copia a saída correspondente para o caminho original, executa toda a suíte do projeto, registra o código de saída, o SHA-256 da entrada e restaura o arquivo em um bloco `finally`. Ao final, o estado limpo é verificado novamente. Os principais produtos são:
 
 - `resultados/Resultados_Testes_reexecucao.csv`;
 - `resultados/metadados_reexecucao.json`;
@@ -79,15 +79,15 @@ npm run analise
 
 As definições completas e os limiares estão em `resultados/metodologia_metricas.json`. Em síntese:
 
-- LOC: linhas com tokens sintáticos;
-- complexidade ciclomática: 1 por função mais pontos de decisão;
+- LOC: número de linhas atravessadas por ao menos um token sintático não trivial, tanto para arquivo quanto para função;
+- complexidade ciclomática: soma por arquivo de 1 por função mais seus pontos de decisão; `Decisoes_Total` remove esse custo-base;
 - complexidade cognitiva: pontos por decisões e aninhamento;
-- duplicação: proporção aproximada de linhas em sequências normalizadas de 20 tokens repetidas no mesmo arquivo;
+- duplicação: percentual de tokens pertencentes a sequências normalizadas repetidas de 20 tokens no mesmo arquivo;
 - odores: função longa (>50 LOC), CC alta (>10), complexidade cognitiva alta (>15), aninhamento profundo (>3), arquivo grande (>300 LOC) e duplicação (>=10%).
 
-O analisador produz `metricas_por_arquivo.csv`, `metricas_resumo.csv` e `metodologia_metricas.json`. A etapa de sensibilidade acrescenta `metricas_por_repositorio.csv`, `metricas_deltas_por_arquivo.csv`, `metricas_distribuicao_cc.csv` e `metricas_sensibilidade.csv`. No último arquivo, saídas com `FAIL` e seus originais correspondentes são excluídos em conjunto, preservando o pareamento. O gráfico usa a redução percentual de cada grupo em relação às mesmas 20 unidades originais; valores negativos representam aumento da métrica.
+O analisador produz `metricas_por_arquivo.csv`, `metricas_resumo.csv` e `metodologia_metricas.json`. A etapa de sensibilidade acrescenta `metricas_por_repositorio.csv`, `metricas_deltas_por_arquivo.csv`, `metricas_distribuicao_cc.csv` e `metricas_sensibilidade.csv`. No último arquivo, saídas com `FAIL` e seus originais correspondentes são excluídos em conjunto, preservando o pareamento; LOC, CC, pontos de decisão, aproximação cognitiva, maior função, aninhamento, duplicação e cada uma das seis regras são recalculados nesse subconjunto. O gráfico usa a redução percentual de cada grupo em relação às mesmas 20 unidades originais; valores negativos representam aumento da métrica.
 
-As seis regras de odores são decisões operacionais exploratórias. Suas categorias devem ser interpretadas separadamente; a soma de ocorrências heterogêneas não constitui escala validada nem porcentagem direta de qualidade.
+As seis regras de ocorrência são decisões operacionais exploratórias. Seus limiares foram pré-especificados para tornar a análise executável, não por constituírem pontos de corte validados para React. As categorias devem ser interpretadas separadamente; a soma de ocorrências heterogêneas não constitui escala validada nem porcentagem direta de qualidade.
 
 ## Execução completa
 

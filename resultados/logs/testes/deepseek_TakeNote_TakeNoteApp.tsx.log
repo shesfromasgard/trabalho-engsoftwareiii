@@ -2,32 +2,32 @@
 > jest --config config/jest.config.js --runInBand --watchAll=false
 
 
-PASS tests/unit/client/containers/TakeNoteApp.test.tsx (7.944 s)
+PASS tests/unit/client/containers/TakeNoteApp.test.tsx (8.683 s)
 PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
-PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
-PASS tests/unit/client/components/LastSyncedNotification.test.tsx
-PASS tests/unit/client/slices/auth.test.ts
-PASS tests/unit/client/slices/note.test.ts
 PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
+PASS tests/unit/client/utils/index.test.ts
+PASS tests/unit/client/slices/note.test.ts
 PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
 PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
-PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
-PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
-PASS tests/unit/client/components/Switch.test.tsx
-PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
-PASS tests/unit/client/utils/index.test.ts
-PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/client/components/LastSyncedNotification.test.tsx
 PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
 PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/slices/sync.test.ts
+PASS tests/unit/client/slices/settings.test.ts
 PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
 PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
-PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
 PASS tests/unit/server/middleware/checkAuth.test.ts
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
 PASS tests/unit/client/slices/category.test.ts
-PASS tests/unit/client/slices/sync.test.ts
 
 Test Suites: 23 passed, 23 total
 Tests:       101 passed, 101 total
 Snapshots:   0 total
-Time:        24.177 s
+Time:        30.413 s
 Ran all test suites.

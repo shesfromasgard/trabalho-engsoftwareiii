@@ -88,6 +88,13 @@ function assertRepository(repoName, repoDir) {
       `${repoName}: commit ${commit || 'não identificado'}; esperado ${expectedCommits[repoName]}`,
     );
   }
+  const status = run('git', ['status', '--porcelain', '--untracked-files=all'], repoDir);
+  if (status.status !== 0) {
+    throw new Error(`${repoName}: não foi possível verificar a árvore de trabalho.`);
+  }
+  if (status.stdout.trim()) {
+    throw new Error(`${repoName}: árvore de trabalho deve estar limpa antes da execução.`);
+  }
 }
 
 function testCommand(repoName) {
@@ -207,6 +214,9 @@ for (const llm of llms) {
     });
   }
 }
+
+assertRepository('TakeNote', takenoteDir);
+assertRepository('ReactAdmin', reactAdminDir);
 
 const headers = Object.keys(results[0]);
 const csv = [

@@ -3,7 +3,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const baseDir = path.join(__dirname, '..');
-const roots = ['Amostras_Originais', 'Amostras_Refatoradas', 'resultados'];
+const roots = ['Amostras_Originais', 'Amostras_Refatoradas', 'resultados', 'scripts'];
 const excluded = new Set(['manifesto_sha256.csv']);
 
 function walk(dir) {
@@ -22,8 +22,12 @@ function csv(value) {
   return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
-const files = roots
-  .flatMap((root) => walk(path.join(baseDir, root)))
+const rootFiles = fs
+  .readdirSync(baseDir, { withFileTypes: true })
+  .filter((entry) => entry.isFile())
+  .map((entry) => path.join(baseDir, entry.name));
+
+const files = [...roots.flatMap((root) => walk(path.join(baseDir, root))), ...rootFiles]
   .filter((file) => !excluded.has(path.basename(file)))
   .sort((a, b) => a.localeCompare(b));
 

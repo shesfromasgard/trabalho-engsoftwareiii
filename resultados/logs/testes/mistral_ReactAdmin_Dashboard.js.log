@@ -4,12 +4,12 @@
 
  RUN  v4.0.18 C:/Users/laura/Downloads/Trabalho Engenharia de Software III/tmp/source_repos/react-material-admin
 
-···x
+··x·
 
  Test Files  1 failed | 2 passed (3)
       Tests  1 failed | 3 passed (4)
-   Start at  20:21:43
-   Duration  18.97s (transform 613ms, setup 1.15s, import 10.35s, tests 2.33s, environment 4.36s)
+   Start at  22:47:18
+   Duration  32.08s (transform 979ms, setup 1.89s, import 17.71s, tests 3.51s, environment 7.63s)
 
 
 

@@ -55,6 +55,13 @@ function mean(values) {
   return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0;
 }
 
+function median(values) {
+  if (!values.length) return 0;
+  const sorted = [...values].sort((left, right) => left - right);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+}
+
 function csvEscape(value) {
   const text = String(value ?? '');
   return /[\n\r,\"]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
@@ -69,7 +76,7 @@ function writeCsv(filePath, rows) {
   fs.writeFileSync(filePath, `${content}\n`, 'utf8');
 }
 
-function tokenMetrics(source, scriptKind) {
+function tokenMetrics(source, scriptKind, sourceFile) {
   const languageVariant = scriptKind === ts.ScriptKind.TSX || scriptKind === ts.ScriptKind.JSX
     ? ts.LanguageVariant.JSX
     : ts.LanguageVariant.Standard;
@@ -77,9 +84,11 @@ function tokenMetrics(source, scriptKind) {
   const tokens = [];
   const codeLines = new Set();
   for (let kind = scanner.scan(); kind !== ts.SyntaxKind.EndOfFileToken; kind = scanner.scan()) {
-    const position = scanner.getTokenPos();
-    const line = source.slice(0, position).split(/\r?\n/).length;
-    codeLines.add(line);
+    const startPosition = scanner.getTokenPos();
+    const endPosition = Math.max(startPosition, scanner.getTextPos() - 1);
+    const startLine = sourceFile.getLineAndCharacterOfPosition(startPosition).line + 1;
+    const endLine = sourceFile.getLineAndCharacterOfPosition(endPosition).line + 1;
+    for (let line = startLine; line <= endLine; line += 1) codeLines.add(line);
     if (kind === ts.SyntaxKind.Identifier || kind === ts.SyntaxKind.PrivateIdentifier) tokens.push('ID');
     else if (kind === ts.SyntaxKind.NumericLiteral || kind === ts.SyntaxKind.BigIntLiteral) tokens.push('NUM');
     else if (
@@ -110,11 +119,12 @@ function tokenMetrics(source, scriptKind) {
   }
   return {
     loc: codeLines.size,
+    codeLines,
     duplicatePercent: tokens.length ? (duplicated.size / tokens.length) * 100 : 0,
   };
 }
 
-function analyzeFunction(node, sourceFile) {
+function analyzeFunction(node, sourceFile, codeLines) {
   let cyclomatic = 1;
   let cognitive = 0;
   let maxNesting = 0;
@@ -142,7 +152,8 @@ function analyzeFunction(node, sourceFile) {
   visit(node.body || node, 0, true);
   const startLine = sourceFile.getLineAndCharacterOfPosition(node.getStart(sourceFile)).line + 1;
   const endLine = sourceFile.getLineAndCharacterOfPosition(node.getEnd()).line + 1;
-  return { cyclomatic, cognitive, loc: endLine - startLine + 1, maxNesting };
+  const loc = [...codeLines].filter((line) => line >= startLine && line <= endLine).length;
+  return { cyclomatic, cognitive, loc, maxNesting };
 }
 
 function analyzeFile(filePath, model) {
@@ -150,14 +161,14 @@ function analyzeFile(filePath, model) {
   const extension = path.extname(filePath).toLowerCase();
   const scriptKind = extension === '.tsx' ? ts.ScriptKind.TSX : ts.ScriptKind.JSX;
   const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true, scriptKind);
+  const tokenData = tokenMetrics(source, scriptKind, sourceFile);
   const functions = [];
   function collect(node) {
-    if (isFunctionLike(node) && node.body) functions.push(analyzeFunction(node, sourceFile));
+    if (isFunctionLike(node) && node.body) functions.push(analyzeFunction(node, sourceFile, tokenData.codeLines));
     ts.forEachChild(node, collect);
   }
   collect(sourceFile);
 
-  const tokenData = tokenMetrics(source, scriptKind);
   const cyclomaticValues = functions.map((item) => item.cyclomatic);
   const cognitiveValues = functions.map((item) => item.cognitive);
   const functionLocValues = functions.map((item) => item.loc);
@@ -178,7 +189,9 @@ function analyzeFile(filePath, model) {
     LOC: tokenData.loc,
     Funcoes: functions.length,
     CC_Total: cyclomaticValues.reduce((sum, value) => sum + value, 0),
+    Decisoes_Total: cyclomaticValues.reduce((sum, value) => sum + value, 0) - functions.length,
     CC_Media_Funcao: round(mean(cyclomaticValues)),
+    CC_Mediana_Funcao: round(median(cyclomaticValues)),
     CC_Maxima: Math.max(0, ...cyclomaticValues),
     Cognitiva_Total: cognitiveValues.reduce((sum, value) => sum + value, 0),
     Cognitiva_Media_Funcao: round(mean(cognitiveValues)),
@@ -209,27 +222,42 @@ for (const [model, directory] of groups) {
 
 const original = details.filter((row) => row.Modelo === 'Original');
 const originalMeans = {
+  LOC: mean(original.map((row) => row.LOC)),
   CC: mean(original.map((row) => row.CC_Total)),
+  Decisoes: mean(original.map((row) => row.Decisoes_Total)),
   Cognitiva: mean(original.map((row) => row.Cognitiva_Total)),
   Smells: original.reduce((sum, row) => sum + row.Code_Smells_Total, 0),
 };
 
 const summaries = groups.map(([model]) => {
   const rows = details.filter((row) => row.Modelo === model);
+  const loc = mean(rows.map((row) => row.LOC));
   const cc = mean(rows.map((row) => row.CC_Total));
+  const decisions = mean(rows.map((row) => row.Decisoes_Total));
   const cognitive = mean(rows.map((row) => row.Cognitiva_Total));
   const smells = rows.reduce((sum, row) => sum + row.Code_Smells_Total, 0);
   const reduction = (value, baseline) => (baseline ? ((baseline - value) / baseline) * 100 : 0);
   return {
     Modelo: model,
     Arquivos: rows.length,
-    LOC_Media: round(mean(rows.map((row) => row.LOC))),
+    LOC_Media: round(loc),
+    Reducao_LOC_Pct: model === 'Original' ? 0 : round(reduction(loc, originalMeans.LOC)),
     CC_Media_Arquivo: round(cc),
+    Decisoes_Media_Arquivo: round(decisions),
+    Reducao_Decisoes_Pct: model === 'Original' ? 0 : round(reduction(decisions, originalMeans.Decisoes)),
+    CC_Mediana_Funcao_Media: round(mean(rows.map((row) => row.CC_Mediana_Funcao))),
     CC_Maxima_Media: round(mean(rows.map((row) => row.CC_Maxima))),
     Cognitiva_Media_Arquivo: round(cognitive),
     Cognitiva_Maxima_Media: round(mean(rows.map((row) => row.Cognitiva_Maxima))),
     Maior_Funcao_LOC_Media: round(mean(rows.map((row) => row.Maior_Funcao_LOC))),
+    Aninhamento_Maximo_Medio: round(mean(rows.map((row) => row.Aninhamento_Maximo))),
     Duplicacao_Media_Pct: round(mean(rows.map((row) => row.Duplicacao_Tokens_Pct))),
+    Ocorrencias_Funcao_Longa: rows.reduce((sum, row) => sum + row.Smell_Funcao_Longa, 0),
+    Ocorrencias_CC_Alta: rows.reduce((sum, row) => sum + row.Smell_CC_Alta, 0),
+    Ocorrencias_Cognitiva_Alta: rows.reduce((sum, row) => sum + row.Smell_Cognitiva_Alta, 0),
+    Ocorrencias_Aninhamento: rows.reduce((sum, row) => sum + row.Smell_Aninhamento, 0),
+    Ocorrencias_Arquivo_Grande: rows.reduce((sum, row) => sum + row.Smell_Arquivo_Grande, 0),
+    Ocorrencias_Duplicacao: rows.reduce((sum, row) => sum + row.Smell_Duplicacao, 0),
     Code_Smells_Total: smells,
     Reducao_CC_Pct: model === 'Original' ? 0 : round(reduction(cc, originalMeans.CC)),
     Reducao_Cognitiva_Pct: model === 'Original' ? 0 : round(reduction(cognitive, originalMeans.Cognitiva)),
@@ -246,8 +274,9 @@ fs.writeFileSync(
     {
       parser: `TypeScript ${ts.version}`,
       definitions: {
-        LOC: 'linhas contendo tokens não triviais',
-        cyclomatic: '1 por função mais if, laços, case, catch, ternário e operadores &&, || e ??',
+        LOC: 'número de linhas atravessadas por ao menos um token não trivial; a mesma regra delimita LOC de arquivo e de função',
+        cyclomatic: 'soma por arquivo da CC das funções: 1 por função mais if, laços, case, catch, ternário e operadores &&, || e ??',
+        decisions: 'CC total menos o número de funções; aproxima os pontos de decisão sem o custo-base de 1 por função',
         cognitive: 'incremento estrutural ponderado pelo nível de aninhamento; operadores lógicos acrescentam 1',
         duplication: 'percentual de tokens cobertos por sequências normalizadas repetidas de 20 tokens no mesmo arquivo',
         interpretation: 'definições operacionais exploratórias; não equivalem a métricas de ferramenta comercial',

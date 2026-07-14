@@ -2,48 +2,32 @@
 > jest --config config/jest.config.js --runInBand --watchAll=false
 
 
-ts-jest[ts-compiler] (WARN) [96msrc/client/containers/NoteList.tsx[0m:[93m162[0m:[93m13[0m - [91merror[0m[90m TS2315: [0mType 'ReactMouseEvent' is not generic.
-
-[7m162[0m     (event: ReactMouseEvent<HTMLDivElement, MouseEvent>, noteId: string = '') => {
-[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-[96msrc/client/containers/NoteList.tsx[0m:[93m301[0m:[93m20[0m - [91merror[0m[90m TS2322: [0mType 'RefObject<HTMLInputElement>' is not assignable to type 'MutableRefObject<HTMLInputElement>'.
-  Types of property 'current' are incompatible.
-    Type 'HTMLInputElement | null' is not assignable to type 'HTMLInputElement'.
-      Type 'null' is not assignable to type 'HTMLInputElement'.
-
-[7m301[0m         <SearchBar searchRef={searchRef} searchNotes={handleSearchNotes} />
-[7m   [0m [91m                   ~~~~~~~~~[0m
-
-  [96msrc/client/components/NoteList/SearchBar.tsx[0m:[93m6[0m:[93m3[0m
-    [7m6[0m   searchRef: React.MutableRefObject<HTMLInputElement>
-    [7m [0m [96m  ~~~~~~~~~[0m
-    The expected type comes from property 'searchRef' which is declared here on type 'IntrinsicAttributes & SearchBarProps & { children?: ReactNode; }'
-PASS tests/unit/client/containers/TakeNoteApp.test.tsx (9.08 s)
+PASS tests/unit/client/containers/TakeNoteApp.test.tsx (9.848 s)
+PASS tests/unit/client/slices/note.test.ts
 PASS tests/unit/client/components/editor/PreviewEditor.test.tsx
 PASS tests/unit/client/containers/ContextMenuOptions.test.tsx
-PASS tests/unit/client/components/Switch.test.tsx
-PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
-PASS tests/unit/client/components/LastSyncedNotification.test.tsx
-PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
-PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
-PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
-PASS tests/unit/client/slices/note.test.ts
-PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
-PASS tests/unit/client/slices/sync.test.ts
-PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
-PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
-PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
-PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
-PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
 PASS tests/unit/client/utils/index.test.ts
+PASS tests/unit/client/components/NoteList/NoteListButton.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButtonUploader.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryForm.test.tsx
 PASS tests/unit/client/components/NoteList/SearchBar.test.tsx
+PASS tests/unit/client/components/AppSidebar/AddCategoryButton.test.tsx
+PASS tests/unit/client/components/editor/EditorEmpty.test.tsx
+PASS tests/unit/client/components/LastSyncedNotification.test.tsx
+PASS tests/unit/client/components/SettingsModal/IconButton.test.tsx
+PASS tests/unit/client/components/AppSidebar/ScratchpadOption.test.tsx
+PASS tests/unit/client/components/AppSidebar/FolderOption.test.tsx
+PASS tests/unit/client/slices/sync.test.ts
 PASS tests/unit/server/middleware/checkAuth.test.ts
-PASS tests/unit/client/slices/category.test.ts
-PASS tests/unit/client/slices/auth.test.ts
+PASS tests/unit/client/components/AppSidebar/CollapseCategoryButton.test.tsx
+PASS tests/unit/client/components/Switch.test.tsx
 PASS tests/unit/client/slices/settings.test.ts
+PASS tests/unit/client/slices/category.test.ts
+PASS tests/unit/client/components/AppSidebar/ActionButton.test.tsx
+PASS tests/unit/client/slices/auth.test.ts
 
 Test Suites: 23 passed, 23 total
 Tests:       101 passed, 101 total
 Snapshots:   0 total
-Time:        27.369 s
+Time:        29.969 s
 Ran all test suites.
